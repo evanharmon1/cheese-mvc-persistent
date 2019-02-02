@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<div class="form-group">
+<form th:object="${category}" method="POST">
+    <label th:for="name">Category Name</label>
+    <input th:field="*{name}" />
+    <span th:errors="*{name}" class="error"></span>
+    <input type="submit" value="Add New Category" />
+</form>
+</div>
+
+</body>
+</html>
