@@ -43,6 +43,12 @@ public class Menu {
         return cheeses;
     }
 
+    public void delCheese(Cheese cheese) {
+        if (cheeses.contains(cheese)) {
+            cheeses.remove(cheese);
+        }
+    }
+
     public void addItem(Cheese item) {
         cheeses.add(item);
     }
