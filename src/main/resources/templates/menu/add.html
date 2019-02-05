@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org/">
+    <head th:replace="fragments :: head"></head>
+    <title th:text="${title}">Default Title</title>
+    <body>
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+        <form th:object="${menu}" method="POST">
+            <label th:for="name"></label>
+            <input th:field="*{name}" />
+            <span th:errors="*{name}" class="error"></span>
+            <input type="submit" value="Add Menu" />
+        </form>
+
+    </body>
+</html>

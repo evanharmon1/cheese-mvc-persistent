@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org/">
+<head th:replace="fragments :: head"></head>
+    <title th:text="${title}">Default Title</title>
+<body>
+
+    <h1 th:text="${title}">Default Title</h1>
+
+    <nav th:replace="fragments :: navigation"></nav>
+
+    <ul th:object="${menus}">
+        <li th:each="menu : ${menus}">
+            <a th:text="${menu.name}" th:href="@{/menu/view/{id}(id=${menu.id})}"></a>
+        </li>
+    </ul>
+
+    <a href="/menu/add">Add a Menu</a>
+
+</body>
+</html>

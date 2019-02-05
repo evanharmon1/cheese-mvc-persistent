@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org/">
+    <head th:replace="fragments :: head"></head>
+    <title th:text="${title}">Default Title</title>
+    <body>
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+        <form th:object="${form}" method="POST" action="/menu/add-item">
+            <label th:for="cheeseId"></label>
+            <select th:field="*{cheeseId}">
+                <option th:each="cheese : *{cheeses}" th:text="${cheese.name}" th:value="${cheese.id}"></option>
+            </select>
+            <span th:errors="*{cheeseId}" class="error"></span>
+            <input type="submit" value="Add Item" />
+            <input type="hidden" name="menuId" th:value="*{menu.id}" />
+        </form>
+
+    </body>
+</html>
