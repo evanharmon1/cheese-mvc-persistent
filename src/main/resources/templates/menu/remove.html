@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body class="container">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+        <form method="post">
+
+            <div th:each="menu : ${menus}" class="checkbox">
+                <input type="checkbox" name="menuIds" th:value="${menu.id}" th:id="${menu.id}"/>
+                <label th:for="${menu.id}" th:text="${menu.name}"></label>
+                <br />
+            </div>
+
+            <input type="submit" value="Remove Menu" />
+        </form>
+
+    </body>
+</html>

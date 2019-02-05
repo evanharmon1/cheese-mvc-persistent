@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleag.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
+    <head th:replace="fragments :: head"></head>
+    <title th:text="title"></title>
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>

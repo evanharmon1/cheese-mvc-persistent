@@ -75,6 +75,7 @@ public class CheeseController {
     @RequestMapping(value = "remove", method = RequestMethod.POST)
     public String processRemoveCheeseForm(@RequestParam int[] cheeseIds) {
 
+        // Iterate through all menus for the cheese you want to remove and delete it from the menu before deleting the cheese itself
         Iterable<Menu> menus = menuDao.findAll();
         for (int cheeseId : cheeseIds) {
             for (Menu menu : menus) {
