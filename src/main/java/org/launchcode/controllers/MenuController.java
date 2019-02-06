@@ -94,6 +94,34 @@ public class MenuController {
         return "redirect:view/" + menu.getId();
     }
 
+
+    @RequestMapping(value = "remove-item/{id}", method = RequestMethod.GET)
+    public String removeItem(@PathVariable int id, Model model) {
+
+        Menu menu = menuDao.findOne(id);
+        model.addAttribute("cheeses", menu.getCheeses());
+        model.addAttribute("title", "Remove cheese from menu: " + menu.getName());
+        model.addAttribute("menuId", id);
+
+        return "menu/remove-item";
+    }
+
+
+    @RequestMapping(value = "remove-item", method = RequestMethod.POST)
+    public String processRemoveCategoryForm(@RequestParam int[] cheeseIds, Integer menuId) {
+
+        Menu menu = menuDao.findOne(menuId);
+        for (int cheeseId : cheeseIds) {
+            Cheese cheese = cheeseDao.findOne(cheeseId);
+            menu.delCheese(cheese);
+        }
+
+        menuDao.save(menu);
+
+        return "redirect:view/" + menu.getId();
+
+    }
+
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveMenuForm(Model model) {
         model.addAttribute("menus", menuDao.findAll());

@@ -14,9 +14,12 @@
             </li>
         </ul>
 
-        <span th:text="${errorMessage}" class="error"></span>
+        <span th:text="${errorMessage}" class="text-danger"></span>
 
-        <p><a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a></p>
+        <p>
+            <a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a> |
+            <a th:href="'/menu/remove-item/' + ${menu.id}">Remove Cheese</a>
+        </p>
 
     </body>
 </html>
