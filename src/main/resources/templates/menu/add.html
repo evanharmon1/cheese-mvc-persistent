@@ -8,12 +8,17 @@
 
         <nav th:replace="fragments :: navigation"></nav>
 
-        <form th:object="${menu}" method="POST">
-            <label th:for="name"></label>
-            <input th:field="*{name}" />
-            <span th:errors="*{name}" class="error"></span>
+
+        <form th:object="${menu}" method="POST" style="max-width:600px;">
+            <div class="form-group">
+                <label th:for="name">Menu Name</label>
+                <input th:field="*{name}" class="form-control"/>
+                <span th:errors="*{name}" class="text-danger"></span>
+            </div>
+
             <input type="submit" value="Add Menu" />
         </form>
+
 
     </body>
 </html>

@@ -8,14 +8,15 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<div class="form-group">
-<form th:object="${category}" method="POST">
-    <label th:for="name">Category Name</label>
-    <input th:field="*{name}" />
-    <span th:errors="*{name}" class="error"></span>
-    <input type="submit" value="Add New Category" />
+
+<form th:object="${category}" method="POST" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Category Name</label>
+        <input th:field="*{name}" class="form-control"/>
+        <span th:errors="*{name}" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Add Category" />
 </form>
-</div>
 
 </body>
 </html>

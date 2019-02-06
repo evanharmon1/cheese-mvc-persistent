@@ -1,7 +1,25 @@
 body {
     font-family: sans-serif;
+    color: #6c71c4;
+    background-color: #073642;
 }
 
 nav {
     margin-bottom: 20px;
+}
+
+input[type=submit] {
+    color: black;
+}
+
+a {
+    color: #2aa198;
+}
+
+option, select {
+    color: black;
+}
+
+.text-danger {
+    color: red;
 }

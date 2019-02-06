@@ -10,12 +10,12 @@
     <div class="form-group">
         <label th:for="name">Name</label>
         <input class="form-control" th:field="*{name}" />
-        <span th:errors="*{name}" class="error"></span>
+        <span th:errors="*{name}" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label th:for="description">Description</label>
         <input class="form-control" th:field="*{description}" />
-        <span th:errors="*{description}" class="error"></span>
+        <span th:errors="*{description}" class="text-danger"></span>
     </div>
 
     <div class="form-group">

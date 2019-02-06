@@ -13,7 +13,7 @@
             <select th:field="*{cheeseId}">
                 <option th:each="cheese : *{cheeses}" th:text="${cheese.name}" th:value="${cheese.id}"></option>
             </select>
-            <span th:errors="*{cheeseId}" class="error"></span>
+            <span th:errors="*{cheeseId}" class="text-danger"></span>
             <input type="submit" value="Add Item" />
             <input type="hidden" name="menuId" th:value="*{menu.id}" />
         </form>

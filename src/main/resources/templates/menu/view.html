@@ -10,7 +10,7 @@
 
         <ul th:object="${menu}">
             <li th:each="cheese : ${menu.cheeses}">
-                <a th:text="${cheese.name}"></a>
+                <p th:text="${cheese.name}"></p>
             </li>
         </ul>
 
