@@ -51,7 +51,7 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@ModelAttribute  @Valid Cheese newCheese,
-                                       Errors errors, @RequestParam(value="categoryId", required=false) Integer categoryId, Model model) {
+                                       Errors errors, @RequestParam(value = "categoryId", required=false) Integer categoryId, Model model) {
 
         if (errors.hasErrors() || categoryId == null) {
             model.addAttribute("title", "Add Cheese");

@@ -14,6 +14,8 @@
             </li>
         </ul>
 
+        <span th:text="${errorMessage}" class="error"></span>
+
         <p><a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a></p>
 
     </body>

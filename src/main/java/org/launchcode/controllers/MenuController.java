@@ -48,15 +48,18 @@ public class MenuController {
             return "menu/add";
         }
 
+
+
         menuDao.save(newMenu);
         return "redirect:view/" + newMenu.getId();
     }
 
     @RequestMapping(value = "view/{id}", method = RequestMethod.GET)
-    public String viewMenu(@PathVariable int id, Model model) {
+    public String viewMenu(@PathVariable int id, Model model, @RequestParam(value = "duplicate", required=false) String errorMessage) {
 
         Menu menu = menuDao.findOne(id);
         model.addAttribute("menu", menu);
+        model.addAttribute("errorMessage", errorMessage);
 
         return "menu/view";
     }
@@ -81,6 +84,10 @@ public class MenuController {
 
         Cheese cheese = cheeseDao.findOne(form.getCheeseId());
         Menu menu = menuDao.findOne(form.getMenuId());
+        if (menu.getCheeses().contains(cheese)) {
+            String errorMessage = "Menus can't contain duplicates";
+            return "redirect:view/" + menu.getId() + "?duplicate=" + errorMessage;
+        }
         menu.addItem(cheese);
         menuDao.save(menu);
 
