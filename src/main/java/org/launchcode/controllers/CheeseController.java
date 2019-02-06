@@ -51,10 +51,14 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@ModelAttribute  @Valid Cheese newCheese,
-                                       Errors errors, @RequestParam int categoryId, Model model) {
+                                       Errors errors, @RequestParam(value="categoryId", required=false) Integer categoryId, Model model) {
 
-        if (errors.hasErrors()) {
+        if (errors.hasErrors() || categoryId == null) {
             model.addAttribute("title", "Add Cheese");
+            model.addAttribute("categories", categoryDao.findAll());
+            if (categoryId == null) {
+                model.addAttribute("categoryError", "You must choose a category");
+            }
             return "cheese/add";
         }
 
