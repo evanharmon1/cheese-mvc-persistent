@@ -11,6 +11,7 @@
         <label th:for="name">Name</label>
         <input class="form-control" th:field="*{name}" />
         <span th:errors="*{name}" class="text-danger"></span>
+        <span class="text-danger" th:text="${duplicateNameError}"></span>
     </div>
     <div class="form-group">
         <label th:for="description">Description</label>

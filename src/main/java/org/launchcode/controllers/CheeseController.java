@@ -53,6 +53,7 @@ public class CheeseController {
     public String processAddCheeseForm(@ModelAttribute  @Valid Cheese newCheese,
                                        Errors errors, @RequestParam(value = "categoryId", required=false) Integer categoryId, Model model) {
 
+        // Check for category not being selected
         if (errors.hasErrors() || categoryId == null) {
             model.addAttribute("title", "Add Cheese");
             model.addAttribute("categories", categoryDao.findAll());
@@ -64,6 +65,17 @@ public class CheeseController {
 
         Category cat = categoryDao.findOne(categoryId);
         newCheese.setCategory(cat);
+
+        // Check potential new cheese for other cheeses with same name, reject it and return to add cheese view
+        Iterable<Cheese> cheeses = cheeseDao.findAll();
+        for (Cheese cheese : cheeses) {
+            if (cheese.getName().equals(newCheese.getName())) {
+                model.addAttribute("title", "Add Cheese");
+                model.addAttribute("categories", categoryDao.findAll());
+                model.addAttribute("duplicateNameError", "There's already a cheese with that name.");
+                return "cheese/add";
+            }
+        }
 
         cheeseDao.save(newCheese);
         return "redirect:";
