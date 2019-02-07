@@ -48,8 +48,6 @@ public class MenuController {
             return "menu/add";
         }
 
-
-
         menuDao.save(newMenu);
         return "redirect:view/" + newMenu.getId();
     }
@@ -84,6 +82,7 @@ public class MenuController {
 
         Cheese cheese = cheeseDao.findOne(form.getCheeseId());
         Menu menu = menuDao.findOne(form.getMenuId());
+        // On adding a menu item, check if it is a duplicate and reject it if it is.
         if (menu.getCheeses().contains(cheese)) {
             String errorMessage = "Menus can't contain duplicates";
             return "redirect:view/" + menu.getId() + "?duplicate=" + errorMessage;

@@ -11,13 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 
-/**
- * Created by LaunchCode
- */
+
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
@@ -31,7 +28,6 @@ public class CheeseController {
     @Autowired
     private MenuDao menuDao;
 
-    // Request path: /cheese
     @RequestMapping(value = "")
     public String index(Model model) {
 
