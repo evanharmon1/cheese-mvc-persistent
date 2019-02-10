@@ -17,6 +17,9 @@ apply plugin: 'org.springframework.boot'
 jar {
 	baseName = 'cheese-mvc'
 	version = '0.0.1-SNAPSHOT'
+	manifest {
+		attributes 'Main-Class': 'org.launchcode.CheeseMvcApplication'
+	}
 }
 
 sourceCompatibility = 1.8

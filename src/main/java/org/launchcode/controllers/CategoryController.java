@@ -40,7 +40,7 @@ public class CategoryController {
         model.addAttribute("title", "Add Category");
         model.addAttribute(new Category());
 
-        return "/category/add";
+        return "category/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
